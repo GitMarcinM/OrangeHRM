@@ -28,6 +28,7 @@ public class Utils {
         waitForElement(webElement);
         webElement.sendKeys(text);
     }
+
     public static void equalsCurrentPage() {
         getWebDriver().getCurrentUrl().equals(getDomain());
     }

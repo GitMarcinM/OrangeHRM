@@ -11,7 +11,12 @@ public class OrangeHrmNonBddTest {
         Utils.getWebDriver().get(Utils.getDomain());
         String userLogin = "Admin";
         String userPassword = "admin123";
-        orangeHrm.fillLoginDetails(userLogin,userPassword);
+        orangeHrm.fillLoginDetails(userLogin, userPassword);
+    }
+
+    @After
+    public void closeBrowser() {
+        Utils.close();
     }
 
     @Test
@@ -33,10 +38,5 @@ public class OrangeHrmNonBddTest {
         orangeHrm.fillNewEmployeeData(firstName, lastName);
         orangeHrm.buttonClick();
         orangeHrm.equalsCreatedEmployee(firstName, lastName);
-    }
-
-    @After
-    public void closeBrowser() {
-        Utils.close();
     }
 }
