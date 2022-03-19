@@ -2,7 +2,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class OrangeHrmTestNonBDD {
+public class ChangeLangToGermanNonBddTest {
 
     public OrangeHrm orangeHrm = new OrangeHrm();
 

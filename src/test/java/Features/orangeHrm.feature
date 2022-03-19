@@ -11,12 +11,3 @@ Feature: Website language change as Admin
     And User chooses German language from the dropdown list
     And User click on the Save button
     Then Website language changes into German
-
-  Scenario Outline: Login with different data
-    Given User is on the login page
-    When User use invalid login "<login>" or password "<password>"
-    Examples:
-      | login  | password |
-      | Admin  | asdsda   |
-      | Asdaa  | admin123 |
-      | Asadaa | asdsda   |

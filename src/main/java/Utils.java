@@ -1,7 +1,6 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -28,6 +27,9 @@ public class Utils {
     public static void typeText(WebElement webElement, String text) {
         waitForElement(webElement);
         webElement.sendKeys(text);
+    }
+    public static void equalsCurrentPage() {
+        getWebDriver().getCurrentUrl().equals(getDomain());
     }
 
     public static void close() {

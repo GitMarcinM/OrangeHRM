@@ -25,7 +25,7 @@ public class StepDefinitions {
 
     @Given("User is on the login page")
     public void user_is_on_the_login_page() {
-        Utils.getWebDriver().equals(Utils.getDomain());
+        Utils.equalsCurrentPage();
     }
 
     @When("User logs in as Admin")
