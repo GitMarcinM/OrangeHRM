@@ -26,8 +26,8 @@ public class OrangeHrmNonBddTest {
 
     @Test
     public void addNewEmployee() {
-        String firstName = "Zenon";
-        String lastName = "Martyniuk";
+        String firstName = "New";
+        String lastName = "User";
         orangeHrm.addEmployee();
         orangeHrm.buttonClick();
         orangeHrm.fillNewEmployeeData(firstName, lastName);
