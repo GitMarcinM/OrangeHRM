@@ -1,42 +1,24 @@
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import static org.hamcrest.CoreMatchers.is;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrangeHrm {
+import static org.hamcrest.MatcherAssert.assertThat;
+
+public class OrangeHrm extends FindElement {
 
     public OrangeHrm() {
         PageFactory.initElements(Utils.getWebDriver(), this);
     }
 
-    private
-    @FindBy(css = "input[id='txtUsername']")
-    WebElement inputUserName;
-    @FindBy(css = "input[id='txtPassword']")
-    WebElement inputPassword;
-    @FindBy(xpath = "//*[@id=\"menu_admin_viewAdminModule\"]/b")
-    WebElement adminModule;
-    @FindBy(xpath = "//*[@id=\"menu_admin_Configuration\"]")
-    WebElement menu;
-    @FindBy(id = "menu_admin_localization")
-    WebElement localization;
-    @FindBy(id = "btnSave")
-    WebElement button;
-    @FindBy(id = "localization_dafault_language")
-    WebElement languageBar;
-    @FindBy(className = "firstLevelMenu")
-    List <WebElement> mainMenu;
-    @FindBy(id = "spanMessage")
-    WebElement spanMessage;
-
     public void fillLoginDetails(String login, String password) {
-        Utils.typeText(inputUserName, login);
-        inputUserName.sendKeys(Keys.TAB);
+        Utils.typeText(inputLogin, login);
         Utils.typeText(inputPassword, password);
         inputPassword.sendKeys((Keys.ENTER));
     }
@@ -44,6 +26,19 @@ public class OrangeHrm {
         adminModule.click();
         menu.click();
         localization.click();
+    }
+    public void addEmployee() {
+        pimModule.click();
+        addEmployee.click();
+    }
+    public void fillNewEmployeeData(String firstName, String lastName) {
+        Utils.typeText(inputFirstName, firstName);
+        Utils.typeText(inputLastName, lastName);
+    }
+    public void equalsCreatedEmployee(String firstName, String lastName) {
+        assertThat(txtEmpFirstName.getAttribute("value"), is(firstName));
+        assertThat(txtEmpLastName.getAttribute("value"), is(lastName));
+
     }
     public void buttonClick() {
         button.click();
