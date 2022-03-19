@@ -63,7 +63,7 @@ public class OrangeHrm {
         Assert.assertEquals(pagesTitle1, pagesTitle2);
     }
 
-    public void equalsLoginPage() {
+    public void spanMessage() {
         spanMessage.isDisplayed();
     }
 }

@@ -15,12 +15,8 @@ public class Utils {
     public static WebDriver getWebDriver() {
         if (webDriver == null) {
             System.setProperty("webdriver.chrome.driver", chromeDriverPath);
-//            ChromeOptions options = new ChromeOptions();
-//            options.addArguments("--lang=en");
-            webDriver = new ChromeDriver(); //ChromeDriver(options)
-//            wait = new WebDriverWait(webDriver, 10); // zapis dla Selenium 3
-            wait = new WebDriverWait(webDriver, Duration.ofSeconds(10)); // zapis dla Selenium 4
-
+            webDriver = new ChromeDriver();
+            wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
         }
         return webDriver;
     }

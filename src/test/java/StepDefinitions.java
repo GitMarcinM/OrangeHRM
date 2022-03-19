@@ -25,7 +25,7 @@ public class StepDefinitions {
 
     @Given("User is on the login page")
     public void user_is_on_the_login_page() {
-        Utils.getWebDriver().getCurrentUrl();
+        Utils.getWebDriver().equals(Utils.getDomain());
     }
 
     @When("User logs in as Admin")
@@ -71,6 +71,6 @@ public class StepDefinitions {
     @When("User use invalid login {string} or password {string}")
     public void userUseInvalidLoginAndOrPassword(String login, String password) {
         orangeHrm.fillLoginDetails(login, password);
-        orangeHrm.equalsLoginPage();
+        orangeHrm.spanMessage();
     }
 }
