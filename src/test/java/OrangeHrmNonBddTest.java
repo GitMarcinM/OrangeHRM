@@ -5,6 +5,8 @@ import org.junit.Test;
 public class OrangeHrmNonBddTest {
 
     public OrangeHrm orangeHrm = new OrangeHrm();
+    String firstName = "New";
+    String lastName = "User";
 
     @Before
     public void startUp() {
@@ -31,12 +33,21 @@ public class OrangeHrmNonBddTest {
 
     @Test
     public void addNewEmployee() {
-        String firstName = "New";
-        String lastName = "User";
+        orangeHrm.employeeMenu();
         orangeHrm.addEmployee();
         orangeHrm.buttonClick();
         orangeHrm.fillNewEmployeeData(firstName, lastName);
         orangeHrm.buttonClick();
+        orangeHrm.employeeDetails();
         orangeHrm.equalsCreatedEmployee(firstName, lastName);
+    }
+
+    @Test
+    public void deleteEmployee() {
+        orangeHrm.employeeMenu();
+        Utils.waitForElement(orangeHrm.searchEmployee);
+        orangeHrm.searchEmployee(firstName, lastName);
+        orangeHrm.deleteEmployee();
+
     }
 }

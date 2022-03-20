@@ -27,7 +27,7 @@ public class StepDefinitions {
         orangeHrm.fillLoginDetails(userLogin, userPassword);
     }
 
-    @When("User chooses Configuration option from the Admin menu")
+    @And("User chooses Configuration option from the Admin menu")
     public void userChoosesConfigurationOption() {
         orangeHrm.adminModule.click();
     }
@@ -38,7 +38,7 @@ public class StepDefinitions {
         orangeHrm.localization.click();
     }
 
-    @And("User click on the Edit button")
+    @When("User click on the Edit button")
     public void userClicksEditButton() {
         orangeHrm.buttonClick();
     }
@@ -66,5 +66,33 @@ public class StepDefinitions {
     @Then("Span message is displayed")
     public void spanMessageIsDisplayed() {
         orangeHrm.spanMessage();
+    }
+
+    String firstName = "New";
+    String lastName = "User";
+
+    @And("User click the PIM menu")
+    public void userClickThePIMMenu() {
+        orangeHrm.pimModule.click();
+    }
+
+    @And("User click on the Add button")
+    public void userClickOnTheAddButton() {
+        orangeHrm.addEmployee.click();
+    }
+
+    @When("User fill the required fields")
+    public void userFillTheRequiredFields() {
+        orangeHrm.fillNewEmployeeData(firstName, lastName);
+    }
+
+    @Then("New employee was created")
+    public void newEmployeeWasCreated() {
+        orangeHrm.employeeDetails();
+    }
+
+    @And("The data matches")
+    public void theDataMatches() {
+        orangeHrm.equalsCreatedEmployee(firstName, lastName);
     }
 }

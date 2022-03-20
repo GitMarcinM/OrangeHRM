@@ -20,7 +20,7 @@ public class Utils {
         return webDriver;
     }
 
-    private static void waitForElement(WebElement webElement) {
+    public static void waitForElement(WebElement webElement) {
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 

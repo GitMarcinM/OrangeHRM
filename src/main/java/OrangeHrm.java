@@ -29,8 +29,10 @@ public class OrangeHrm extends FindElement {
         localization.click();
     }
 
-    public void addEmployee() {
+    public void employeeMenu() {
         pimModule.click();
+    }
+    public void addEmployee() {
         addEmployee.click();
     }
 
@@ -39,9 +41,22 @@ public class OrangeHrm extends FindElement {
         Utils.typeText(inputLastName, lastName);
     }
 
+    public void employeeDetails() {
+        employeeDetails.isDisplayed();
+    }
+
     public void equalsCreatedEmployee(String firstName, String lastName) {
         assertThat(txtEmpFirstName.getAttribute("value"), is(firstName));
         assertThat(txtEmpLastName.getAttribute("value"), is(lastName));
+    }
+    public  void searchEmployee(String firstName, String lastName) {
+        Utils.typeText(searchEmployee, firstName +" " + lastName);
+        searchButton.click();
+    }
+    public void deleteEmployee() {
+        markCheckbox.click();
+        deleteButton.click();
+        dialogButton.click();
     }
 
     public void buttonClick() {

@@ -20,6 +20,8 @@ public class FindElement {
     WebElement inputLastName;
     @FindBy(className = "firstLevelMenu")
     List<WebElement> mainMenu;
+    @FindBy(id = "empsearch_employee_name_empName")
+    WebElement searchEmployee;
 
     //menu
     @FindBy(xpath = "//*[@id=\"menu_admin_viewAdminModule\"]/b")
@@ -38,8 +40,20 @@ public class FindElement {
     WebElement addEmployee;
     @FindBy(id = "btnSave")
     WebElement button;
+    @FindBy(id = "searchBtn")
+    WebElement searchButton;
+    @FindBy(id = "btnDelete")
+    WebElement deleteButton;
+    @FindBy(id = "dialogDeleteBtn")
+    WebElement dialogButton;
+
+    //checkbox
+    @FindBy(xpath = "//td/input")
+    WebElement markCheckbox;
 
     //get text
+    @FindBy(id = "employee-details")
+    WebElement employeeDetails;
     @FindBy(id = "personal_txtEmpFirstName")
     WebElement txtEmpFirstName;
     @FindBy(id = "personal_txtEmpLastName")
