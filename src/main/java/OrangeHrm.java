@@ -57,6 +57,8 @@ public class OrangeHrm extends FindElement {
         markCheckbox.click();
         deleteButton.click();
         dialogButton.click();
+        Utils.waitForElement(deleteMessage);
+        deleteMessage.isDisplayed();
     }
 
     public void buttonClick() {

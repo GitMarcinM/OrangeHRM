@@ -58,4 +58,6 @@ public class FindElement {
     WebElement txtEmpFirstName;
     @FindBy(id = "personal_txtEmpLastName")
     WebElement txtEmpLastName;
+    @FindBy(xpath = "//div[@class='message success fadable']")
+    WebElement deleteMessage;
 }

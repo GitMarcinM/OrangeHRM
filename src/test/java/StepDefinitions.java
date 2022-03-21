@@ -27,6 +27,8 @@ public class StepDefinitions {
         orangeHrm.fillLoginDetails(userLogin, userPassword);
     }
 
+    //Change language into German
+
     @And("User chooses Configuration option from the Admin menu")
     public void userChoosesConfigurationOption() {
         orangeHrm.adminModule.click();
@@ -68,6 +70,8 @@ public class StepDefinitions {
         orangeHrm.spanMessage();
     }
 
+    //Create a new Employee
+
     String firstName = "New";
     String lastName = "User";
 
@@ -94,5 +98,37 @@ public class StepDefinitions {
     @And("The data matches")
     public void theDataMatches() {
         orangeHrm.equalsCreatedEmployee(firstName, lastName);
+    }
+
+    // Remove an Employee
+
+    @And("User fill the Employee Name field")
+    public void userFillTheEmployeeNameField() {
+        Utils.typeText(orangeHrm.searchEmployee, firstName +" " + lastName);
+    }
+
+    @And("User click on the Search button")
+    public void userClickOnTheSearchButton() {
+        orangeHrm.searchButton.click();
+    }
+
+    @When("User mark checkbox next to the employee data")
+    public void userMarkCheckboxNextToTheEmployeeData() {
+        orangeHrm.markCheckbox.click();
+    }
+
+    @And("User click on the Delete button")
+    public void userClickOnTheDeleteButton() {
+        orangeHrm.deleteButton.click();
+    }
+
+    @And("User confirm delete of employee")
+    public void userConfirmDeleteOfEmployee() {
+        orangeHrm.dialogButton.click();
+    }
+
+    @Then("User get message {string}")
+    public void userGetMessage(String arg0) {
+        orangeHrm.deleteMessage.isDisplayed();
     }
 }
