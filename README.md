@@ -8,4 +8,4 @@ Mała paczka testów automatycznych do aplikacji OrangeHRM.
 4. Usunięcie pracownika (w tym przypadku wcześniej utworzonego)
 
 Testy zarówno w wersji BDD, jak i NonBDD.
-BDD możemy uruchomić bezpośrednio ze scenariuszy, jaki przez TestRunner
+BDD możemy uruchomić bezpośrednio ze scenariuszy, jak i przez TestRunner
