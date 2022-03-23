@@ -1,9 +1,9 @@
-Feature: Login as admin using incorrect credentials
+Feature: Login using data from the table
 
-  As an user I want to check what happens if I log in with incorrect credentials
+  As an user I want to check what happens if I log in with data from the table
 
   Scenario Outline: Login with different data
-    Given User use invalid login "<login>" or password "<password>"
+    Given User use login "<login>" and password "<password>" from the table
     Then Span message is displayed
     Examples:
       | login  | password |

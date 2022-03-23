@@ -1,6 +1,8 @@
 Feature: Remove Employee
 
-  Scenario: As an Admin I want to able delete an Employee when he is fired
+  As an Admin I want to able delete an Employee when he is fired
+
+  Scenario: Remove an Employee
     Given User logs in as Admin
     And User click the PIM menu
     And User fill the Employee Name field
