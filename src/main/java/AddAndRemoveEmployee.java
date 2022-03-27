@@ -40,8 +40,6 @@ public class AddAndRemoveEmployee {
     WebElement deleteMessage;
     @FindBy(xpath = "//td[3]/a")
     WebElement employeeFirstName;
-    @FindBy(xpath = "//td[4]/a")
-    WebElement employeeLastName;
 
     public void employeeMenu() {
         pimModule.click();

@@ -5,5 +5,5 @@ public class Enum {
 
     public static final List<String> targetMenu = Arrays.asList(
             "Admin", "Personendatenmanagement", "Abwesenheiten", "Zeit", "Bewerbermanagement",
-            "Persönliche Informationen", "Leistung", "Cockpit", "Verzeichnis", "Wartung", "Buzz");
+            "Persönliche Informationen", "Performance", "Cockpit", "Directory", "Maintenance", "Buzz");
 }
