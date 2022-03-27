@@ -10,8 +10,7 @@ public class StepDefinitions {
     private Base base = new Base();
     private AddAndRemoveEmployee employee = new AddAndRemoveEmployee();
     private ChangeLangToGerman lang = new ChangeLangToGerman();
-    String userLogin = "Admin";
-    String userPassword = "admin123";
+
     String language = "German - Deutsch";
 
     @Before
@@ -26,25 +25,17 @@ public class StepDefinitions {
 
     @Given("User logs in as Admin")
     public void userLogsInAsAdmin() {
-        base.fillLoginDetails(userLogin, userPassword);
+        base.fillLoginDetails(base.userLogin, base.userPassword);
     }
 
-    //Change language into German
-
-    @And("User chooses Configuration option from the Admin menu")
+    @And("User chooses Location option from the Admin > Configuration menu")
     public void userChoosesConfigurationOption() {
-        lang.adminModule.click();
-        lang.menuConfiguration.click();
-    }
-
-    @And("User chooses Location option from the Configuration menu")
-    public void userChoosesLocationOption() {
-        lang.localization.click();
+        lang.configurationMenu();
     }
 
     @When("User click on the Edit button")
     public void userClicksEditButton() {
-        base.editSaveButtonClick();
+        base.editSaveButton();
     }
 
     @And("User chooses German language from the dropdown list")
@@ -54,12 +45,12 @@ public class StepDefinitions {
 
     @And("User click on the Save button")
     public void userClickSaveButton() {
-        base.editSaveButtonClick();
+        base.editSaveButton();
     }
 
     @Then("Website language changes into German")
     public void languageChangesIntoGerman() {
-        lang.equalsMainMenuList(MainMenuList.targetMenu);
+        lang.equalsMainMenuList(Enum.targetMenu);
     }
 
     @When("User use login {string} and password {string} from the table")
@@ -67,29 +58,24 @@ public class StepDefinitions {
         base.fillLoginDetails(login, password);
     }
 
-    @Then("Span message is displayed")
-    public void spanMessageIsDisplayed() {
-        base.spanMessage();
+    @Then("User is logged or span message is displayed")
+    public void login() {
+        base.login();
     }
-
-    //Create a new Employee
-
-    String firstName = "New";
-    String lastName = "User";
 
     @And("User click the PIM menu")
     public void userClickThePIMMenu() {
-        employee.pimModule.click();
+        employee.employeeMenu();
     }
 
     @And("User click on the Add button")
     public void userClickOnTheAddButton() {
-        employee.addEmployeeButton.click();
+        employee.addEmployee();
     }
 
     @When("User fill the required fields")
     public void userFillTheRequiredFields() {
-        employee.fillNewEmployeeData(firstName, lastName);
+        employee.fillNewEmployeeData(base.firstName, base.lastName);
     }
 
     @Then("New employee was created")
@@ -99,39 +85,38 @@ public class StepDefinitions {
 
     @And("The data matches")
     public void theDataMatches() {
-        employee.equalsCreatedEmployee(firstName, lastName);
+        employee.equalsCreatedEmployee(base.firstName, base.lastName);
     }
 
     // Remove an Employee
 
     @And("User fill the Employee Name field")
     public void userFillTheEmployeeNameField() {
-        Utils.typeText(employee.searchEmployee, firstName +" " + lastName);
+        Utils.typeText(employee.searchEmployee, base.firstName + " " + base.lastName);
     }
 
     @And("User click on the Search button")
     public void userClickOnTheSearchButton() {
-        employee.searchButton.click();
+        employee.searchButton();
     }
 
     @When("User mark checkbox next to the employee data")
     public void userMarkCheckboxNextToTheEmployeeData() {
-        Utils.waitForElement(employee.markCheckbox);
-        employee.markCheckbox.click();
+        employee.markCheckbox(base.firstName);
     }
 
     @And("User click on the Delete button")
     public void userClickOnTheDeleteButton() {
-        employee.deleteButton.click();
+        employee.deleteEmployee();
     }
 
     @And("User confirm delete of employee")
     public void userConfirmDeleteOfEmployee() {
-        employee.dialogButton.click();
+        employee.confirmRemove();
     }
 
-    @Then("User get message {string}")
-    public void userGetMessage(String arg0) {
+    @Then("User get message about successfully deleted an employee")
+    public void userGetMessage() {
         employee.assertRemovedEmployee();
     }
 }

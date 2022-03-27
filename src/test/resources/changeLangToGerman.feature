@@ -4,8 +4,7 @@ Feature: Website language change as Admin
 
   Scenario: Website language change
     Given User logs in as Admin
-    And User chooses Configuration option from the Admin menu
-    And User chooses Location option from the Configuration menu
+    And User chooses Location option from the Admin > Configuration menu
     When User click on the Edit button
     And User chooses German language from the dropdown list
     And User click on the Save button

@@ -35,13 +35,14 @@ public class ChangeLangToGerman {
         Select select = new Select(languageBar);
         select.selectByVisibleText(lang);
     }
+
     public void equalsMainMenuList(List list) {
-        List<String> pagesTitle1 = new ArrayList<String>(list);
-        List<String> pagesTitle2 = new ArrayList<String>();
+        List<String> mainMenuTarget = new ArrayList<String>(list);
+        List<String> mainMenuCurrent = new ArrayList<String>();
         List<WebElement> firstLevelMenuOptions = mainMenu;
         for (WebElement webElement : firstLevelMenuOptions) {
-            pagesTitle2.add(webElement.getText());
+            mainMenuCurrent.add(webElement.getText());
         }
-        Assert.assertEquals(pagesTitle1, pagesTitle2);
+        Assert.assertEquals(mainMenuTarget, mainMenuCurrent);
     }
 }

@@ -6,6 +6,11 @@ import org.openqa.selenium.support.PageFactory;
 
 public class Base {
 
+    final String userLogin = "Admin";
+    final String userPassword = "admin123";
+    final String firstName = "New";
+    final String lastName = "User";
+
     @FindBy(id = "txtUsername")
     WebElement inputLogin;
     @FindBy(css = "input[id='txtPassword']")
@@ -24,11 +29,20 @@ public class Base {
         Utils.typeText(inputPassword, password);
         inputPassword.sendKeys((Keys.ENTER));
     }
-    public void editSaveButtonClick() {
+
+    public void editSaveButton() {
         editSaveButton.click();
     }
 
-    public void spanMessage() {
-        Assert.assertTrue(spanMessage.isDisplayed());
+    public void login() {
+        String pageAfterLogin = "https://opensource-demo.orangehrmlive.com/index.php/dashboard";
+        String currentPage = Utils.getWebDriver().getCurrentUrl();
+        if (pageAfterLogin.equals(currentPage)) {
+            Assert.assertEquals(pageAfterLogin, currentPage);
+            System.out.println("User is logged in");
+        } else {
+            Assert.assertTrue(spanMessage.isDisplayed());
+            System.out.println("Invalid credentials - span message is displayed");
+        }
     }
 }

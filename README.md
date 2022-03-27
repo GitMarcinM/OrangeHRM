@@ -1,11 +1,12 @@
 # OrangeHRM
 
-Mała paczka testów automatycznych do aplikacji OrangeHRM.
+A little package of automated tests of web application <b>OrangeHRM</b>.
 
-1. Sprawdzenie, czy wyświetla się komunikat po wpisaniu błędnego loginu lub/i hasła.
-2. Zmiana języka aplikacji na niemiecki (sprawdzenie czy wszystkie elementy z menu głównego zmienią język na niemiecki)
-3. Dodanie nowego pracownika
-4. Usunięcie pracownika (w tym przypadku wcześniej utworzonego)
+<li>checking what happen after fill login and password from table</li>
+<li> changing app language to german (checking that all main menu elements are translate)</li>
+<li>adding a new Employee</li>
+<li>removing the created Empoyee</li>
 
-Testy zarówno w wersji BDD, jak i NonBDD.
-BDD możemy uruchomić bezpośrednio ze scenariuszy, jaki przez TestRunner
+Tests are available in <b>BDD</b> and <b>NonBDD</b> versions.
+<br>The <b>BDD</b> tests you can run from <b>TestRunner.java</b> or <b>scenarios in package "features"</b>.
+<br>The <b>NonBDD</b> tests you can run from <b>OrangeHrmNonBddTest.java</b>.

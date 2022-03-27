@@ -22,6 +22,7 @@ public class Utils {
 
     public static void waitForElement(WebElement webElement) {
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
+        wait.until(ExpectedConditions.visibilityOf(webElement));
     }
 
     public static void typeText(WebElement webElement, String text) {
@@ -29,16 +30,12 @@ public class Utils {
         webElement.sendKeys(text);
     }
 
-    public static void equalsCurrentPage() {
-        getWebDriver().getCurrentUrl().equals(getDomain());
-    }
-
     public static void close() {
         webDriver.close();
         webDriver = null;
     }
 
-    public static String getDomain() {
+    public static final String getDomain() {
         return "https://opensource-demo.orangehrmlive.com/";
     }
 }

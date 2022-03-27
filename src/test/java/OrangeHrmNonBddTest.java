@@ -4,18 +4,14 @@ import org.junit.Test;
 
 public class OrangeHrmNonBddTest {
 
-    public Base base = new Base();
+    private Base base = new Base();
     private AddAndRemoveEmployee employee = new AddAndRemoveEmployee();
     private ChangeLangToGerman lang = new ChangeLangToGerman();
-    String firstName = "New";
-    String lastName = "User";
 
     @Before
     public void startUp() {
         Utils.getWebDriver().get(Utils.getDomain());
-        String userLogin = "Admin";
-        String userPassword = "admin123";
-        base.fillLoginDetails(userLogin, userPassword);
+        base.fillLoginDetails(base.userLogin, base.userPassword);
     }
 
     @After
@@ -27,29 +23,31 @@ public class OrangeHrmNonBddTest {
     public void changeLangToGermanNonBddTest() {
         String language = "German - Deutsch";
         lang.configurationMenu();
-        base.editSaveButtonClick();
+        base.editSaveButton();
         lang.changeLanguage(language);
-        base.editSaveButtonClick();
-        lang.equalsMainMenuList(MainMenuList.targetMenu);
+        base.editSaveButton();
+        lang.equalsMainMenuList(Enum.targetMenu);
     }
 
     @Test
     public void addNewEmployee() {
         employee.employeeMenu();
         employee.addEmployee();
-        base.editSaveButtonClick();
-        employee.fillNewEmployeeData(firstName, lastName);
-        base.editSaveButtonClick();
+        base.editSaveButton();
+        employee.fillNewEmployeeData(base.firstName, base.lastName);
+        base.editSaveButton();
         employee.employeeDetails();
-        employee.equalsCreatedEmployee(firstName, lastName);
+        employee.equalsCreatedEmployee(base.firstName, base.lastName);
     }
 
     @Test
     public void deleteEmployee() {
         employee.employeeMenu();
-        Utils.waitForElement(employee.searchEmployee);
-        employee.searchEmployee(firstName, lastName);
+        employee.searchEmployee(base.firstName, base.lastName);
+        employee.searchButton();
+        employee.markCheckbox(base.firstName);
         employee.deleteEmployee();
-
+        employee.confirmRemove();
+        employee.assertRemovedEmployee();
     }
 }

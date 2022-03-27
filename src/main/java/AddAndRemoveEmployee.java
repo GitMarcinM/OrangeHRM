@@ -38,10 +38,15 @@ public class AddAndRemoveEmployee {
     WebElement markCheckbox;
     @FindBy(xpath = "//div[@class='message success fadable']")
     WebElement deleteMessage;
+    @FindBy(xpath = "//td[3]/a")
+    WebElement employeeFirstName;
+    @FindBy(xpath = "//td[4]/a")
+    WebElement employeeLastName;
 
     public void employeeMenu() {
         pimModule.click();
     }
+
     public void addEmployee() {
         addEmployeeButton.click();
     }
@@ -59,18 +64,30 @@ public class AddAndRemoveEmployee {
         assertThat(txtEmpFirstName.getAttribute("value"), is(firstName));
         assertThat(txtEmpLastName.getAttribute("value"), is(lastName));
     }
-    public  void searchEmployee(String firstName, String lastName) {
-        Utils.typeText(searchEmployee, firstName +" " + lastName);
-        searchButton.click();
-    }
-    public void deleteEmployee() {
-        markCheckbox.click();
-        deleteButton.click();
-        dialogButton.click();
-    }
-    public void assertRemovedEmployee() {
-        Utils.waitForElement(deleteMessage);
-        Assert.assertTrue(deleteMessage.isDisplayed());
+
+    public void searchEmployee(String firstName, String lastName) {
+        Utils.typeText(searchEmployee, firstName + " " + lastName);
     }
 
+    public void searchButton() {
+        searchButton.click();
+    }
+
+    public void markCheckbox(String firstName) {
+        if (employeeFirstName.getText().equals(firstName)) {
+            markCheckbox.click();
+        }
+    }
+
+    public void deleteEmployee() {
+        deleteButton.click();
+    }
+
+    public void confirmRemove() {
+        dialogButton.click();
+    }
+
+    public void assertRemovedEmployee() {
+        Assert.assertTrue(deleteMessage.isDisplayed());
+    }
 }
