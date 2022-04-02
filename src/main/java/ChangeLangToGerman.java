@@ -1,3 +1,4 @@
+import org.hamcrest.core.IsEqual;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -43,6 +44,6 @@ public class ChangeLangToGerman {
         for (WebElement webElement : firstLevelMenuOptions) {
             mainMenuCurrent.add(webElement.getText());
         }
-        Assert.assertEquals(mainMenuTarget, mainMenuCurrent);
+        Assert.assertThat(mainMenuTarget, IsEqual.equalTo(mainMenuCurrent));
     }
 }
